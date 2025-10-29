@@ -7,7 +7,7 @@
 
     <groupId>io.github.mooyeali</groupId>
     <artifactId>spring-boot-starter-data-mongodb-func</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <packaging>jar</packaging>
 
     <name>Spring Boot Starter for Functional MongoDB CRUD</name>
@@ -84,7 +84,7 @@
                 <version>0.4.0</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <publishingServerId>mooyeali</publishingServerId>
+                    <publishingServerId>center</publishingServerId>
                     <tokenAuth>true</tokenAuth>
                 </configuration>
             </plugin>
