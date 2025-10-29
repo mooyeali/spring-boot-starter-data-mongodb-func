@@ -1,3 +1,3 @@
 # META-INF/spring.factories
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-cn.com.mooyea.mongofunc.autoconfigure.MongoFunctionalAutoConfiguration
+io.github.mooyea.mongofunc.autoconfigure.MongoFunctionalAutoConfiguration

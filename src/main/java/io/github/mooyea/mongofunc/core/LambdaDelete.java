@@ -1,6 +1,6 @@
-package cn.com.mooyea.mongofunc.core;
+package io.github.mooyea.mongofunc.core;
 
-import cn.com.mooyea.mongofunc.utils.ReflectionUtils;
+import io.github.mooyea.mongofunc.utils.ReflectionUtils;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 

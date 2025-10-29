@@ -1,8 +1,8 @@
-package cn.com.mooyea.mongofunc.service;
+package io.github.mooyea.mongofunc.service;
 
-import cn.com.mooyea.mongofunc.core.LambdaDelete;
-import cn.com.mooyea.mongofunc.core.LambdaQuery;
-import cn.com.mooyea.mongofunc.core.LambdaUpdate;
+import io.github.mooyea.mongofunc.core.LambdaDelete;
+import io.github.mooyea.mongofunc.core.LambdaQuery;
+import io.github.mooyea.mongofunc.core.LambdaUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
