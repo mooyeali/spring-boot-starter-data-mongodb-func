@@ -1,6 +1,6 @@
-package io.github.mooyea.mongofunc.annotation;
+package io.github.mooyeali.mongofunc.annotation;
 
-import io.github.mooyea.mongofunc.autoconfigure.MongoFunctionalAutoConfiguration;
+import io.github.mooyeali.mongofunc.autoconfigure.MongoFunctionalAutoConfiguration;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
