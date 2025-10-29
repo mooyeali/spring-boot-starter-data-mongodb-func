@@ -22,6 +22,10 @@ jobs:
 
       - name: Import GPG private key
         run: |
+          # 重启 gpg-agent
+          gpgconf --kill gpg-agent
+          gpg-agent --daemon
+          
           echo "${{ secrets.GPG_PRIVATE_KEY }}" > /tmp/gpg.key
           gpg --batch --yes --import /tmp/gpg.key
           shred -u /tmp/gpg.key
