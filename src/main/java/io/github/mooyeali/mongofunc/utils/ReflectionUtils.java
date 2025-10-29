@@ -1,4 +1,4 @@
-package io.github.mooyea.mongofunc.utils;
+package io.github.mooyeali.mongofunc.utils;
 
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.util.StringUtils;
