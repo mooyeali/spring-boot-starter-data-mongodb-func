@@ -1,24 +1,31 @@
 name: Publish to Maven Central
+
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up JDK 8
         uses: actions/setup-java@v4
         with:
           java-version: '8'
           distribution: 'temurin'
-          server-id: central
-          server-username: CENTRAL_USERNAME
-          server-password: CENTRAL_TOKEN
+          server-id: center
+          server-username: MAVEN_CENTRAL_USERNAME
+          server-password: MAVEN_CENTRAL_TOKEN
 
-      - name: Publish to Central
-        run: mvn clean deploy
-        env:
-          CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
-          CENTRAL_TOKEN: ${{ secrets.CENTRAL_TOKEN }}
+      - name: Import GPG private key
+        run: |
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" > /tmp/gpg.key
+          gpg --batch --yes --import /tmp/gpg.key
+          shred -u /tmp/gpg.key
+
+      - name: Deploy to Maven Central
+        run: mvn -B -V deploy
+        
