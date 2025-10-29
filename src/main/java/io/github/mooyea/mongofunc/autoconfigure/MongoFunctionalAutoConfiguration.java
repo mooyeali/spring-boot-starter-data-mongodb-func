@@ -1,4 +1,4 @@
-package cn.com.mooyea.mongofunc.autoconfigure;
+package io.github.mooyea.mongofunc.autoconfigure;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.ComponentScan;
