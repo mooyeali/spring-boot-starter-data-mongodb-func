@@ -17,13 +17,20 @@ jobs:
         with:
           java-version: '8'
           distribution: 'temurin'
-          cache: 'maven'
+          cache: maven
           server-id: center
           server-username: MAVEN_CENTRAL_USERNAME
           server-password: MAVEN_CENTRAL_TOKEN
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          # 注意：gpg-private-key 由 setup-java 导入，但更推荐手动控制（见下方说明）
 
-      - name: Java Maven Release
-        run: mvn -ntp -B -U clean deploy -P release -DskipTests
+      - name: Import GPG private key (explicit)
+        run: |
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" > /tmp/gpg.key
+          gpg --batch --yes --import /tmp/gpg.key
+          shred -u /tmp/gpg.key
 
-        
+      - name: Deploy to Maven Central
+        run: mvn -B -V clean deploy
+        env:
+        # 仅当 GPG 密钥有密码时才需要这一行
+        # GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
