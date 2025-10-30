@@ -31,6 +31,3 @@ jobs:
 
       - name: Deploy to Maven Central
         run: mvn -B -V clean deploy
-        env:
-        # 仅当 GPG 密钥有密码时才需要这一行
-        # GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
