@@ -25,7 +25,7 @@ jobs:
 
       - name: Import GPG private key (explicit)
         run: |
-          echo "${{ secrets.GPG_PRIVATE_KEY }}" > /tmp/gpg.key
+          echo "${{ GPG_PRIVATE_KEY }}" > /tmp/gpg.key
           gpg --batch --yes --import /tmp/gpg.key
           shred -u /tmp/gpg.key
 
