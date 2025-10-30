@@ -9,28 +9,21 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Git Repo
+        uses: actions/checkout@v4
 
       - name: Set up JDK 8
         uses: actions/setup-java@v4
         with:
           java-version: '8'
           distribution: 'temurin'
+          cache: 'maven'
           server-id: center
           server-username: MAVEN_CENTRAL_USERNAME
           server-password: MAVEN_CENTRAL_TOKEN
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
 
-      - name: Import GPG private key
-        run: |
-          gpgconf --kill gpg-agent
-          
-          echo "${{ secrets.GPG_PRIVATE_KEY }}" > /tmp/gpg.key
-          gpg --batch --yes --import /tmp/gpg.key
-          shred -u /tmp/gpg.key
-          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
-          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
-          gpgconf --kill gpg-agent
+      - name: Java Maven Release
+        run: mvn -ntp -B -U clean deploy -P release -DskipTests
 
-      - name: Deploy to Maven Central
-        run: mvn -B -V deploy
         
